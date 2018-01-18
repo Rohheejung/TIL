@@ -1,0 +1,138 @@
+[root@localhost ch2]# cp /etc/hosts test.org
+[root@localhost ch2]# ln test.org test.ln2
+[root@localhost ch2]# ln -i
+ln: missing file operand
+Try 'ln --help' for more information.
+[root@localhost ch2]# ls -i
+142379853 data1.cp  142379854 data1.sl  142379855 test.ln2  402657779 you
+142379852 data1.ln    5225673 him       142379855 test.org
+[root@localhost ch2]# ln test.org test.ln
+[root@localhost ch2]# ls -i
+142379853 data1.cp  142379854 data1.sl  142379855 test.ln   142379855 test.org
+142379852 data1.ln    5225673 him       142379855 test.ln2  402657779 you
+[root@localhost ch2]# ls -l
+합계 20
+-rw-r--r-- 1 root root 158  1월 18 10:18 data1.cp
+-rw-r--r-- 1 root root 158  1월 18 10:13 data1.ln
+lrwxrwxrwx 1 root root   5  1월 18 10:20 data1.sl -> data1
+drwxr-xr-x 2 root root   6  1월 18 09:12 him
+-rw-r--r-- 3 root root 158  1월 18 10:30 test.ln
+-rw-r--r-- 3 root root 158  1월 18 10:30 test.ln2
+-rw-r--r-- 3 root root 158  1월 18 10:30 test.org
+drwxr-xr-x 2 root root   6  1월 18 09:12 you
+[root@localhost ch2]# ls
+data1.cp  data1.ln  data1.sl  him  test.ln  test.ln2  test.org  you
+[root@localhost ch2]# cd
+[root@localhost ~]# ls
+anaconda-ks.cfg  core.2061             test.org   다운로드  비디오  음악
+backup           initial-setup-ks.cfg  test1.iso  문서      사진
+ch2              test                  공개       바탕화면  서식
+[root@localhost ~]# cd ch2
+[root@localhost ch2]# ln -s temp tmp
+[root@localhost ch2]# ls
+data1.cp  data1.ln  data1.sl  him  test.ln  test.ln2  test.org  tmp  you
+[root@localhost ch2]# rm tmp
+rm: remove 심볼릭 링크 `tmp'? y
+[root@localhost ch2]# mkdir temp
+[root@localhost ch2]# ln -s temp tmp
+[root@localhost ch2]# ls
+data1.cp  data1.ln  data1.sl  him  temp  test.ln  test.ln2  test.org  tmp  you
+[root@localhost ch2]# ls -i
+142379853 data1.cp    5225673 him      142379855 test.ln2  402657779 you
+142379852 data1.ln  271223201 temp     142379855 test.org
+142379854 data1.sl  142379855 test.ln  137976119 tmp
+[root@localhost ch2]# rm temp
+rm: cannot remove `temp': 디렉터리입니다
+[root@localhost ch2]# rm -r temp
+rm: remove 디렉토리 `temp'? y
+[root@localhost ch2]# rm tmp
+rm: remove 심볼릭 링크 `tmp'? y
+[root@localhost ch2]# ch
+bash: ch: 명령을 찾을 수 없습니다...
+유사한 명령: 'sh'
+[root@localhost ch2]# cd
+[root@localhost ~]# ln -s ch2 tmp
+[root@localhost ~]# ls -i
+137938940 anaconda-ks.cfg       142379838 test.org        7279 바탕화면
+142379844 backup                137976124 test1.iso  405981300 비디오
+137911384 ch2                   142379856 tmp        271133182 사진
+137954229 core.2061             405981299 공개       271133181 서식
+137910887 initial-setup-ks.cfg  137910903 다운로드   137910904 음악
+142379839 test                       7280 문서
+[root@localhost ~]# ls -l
+합계 98548
+-rw-------. 1 root root     1525  1월 15 21:03 anaconda-ks.cfg
+drwxr-xr-x  4 root root       64  1월 18 09:57 backup
+drwxr-xr-x  4 root root      115  1월 18 10:34 ch2
+-rw-------  1 root root  4714496  1월 15 17:30 core.2061
+-rw-r--r--. 1 root root     1576  1월 15 13:01 initial-setup-ks.cfg
+drwxr-xr-x  2 root root       21  1월 18 09:25 test
+-rw-r--r--  1 root root      158  1월 18 09:22 test.org
+-rw-r--r--  1 root root 96186368  1월 16 13:21 test1.iso
+lrwxrwxrwx  1 root root        3  1월 18 10:34 tmp -> ch2
+drwxr-xr-x. 2 root root        6  1월 15 13:05 공개
+drwxr-xr-x. 2 root root       61  1월 15 15:05 다운로드
+drwxr-xr-x. 2 root root        6  1월 15 13:05 문서
+drwxr-xr-x. 2 root root        6  1월 15 13:05 바탕화면
+drwxr-xr-x. 2 root root        6  1월 15 13:05 비디오
+drwxr-xr-x. 2 root root        6  1월 15 13:05 사진
+drwxr-xr-x. 2 root root        6  1월 15 13:05 서식
+drwxr-xr-x. 2 root root        6  1월 15 13:05 음악
+[root@localhost ~]# cd ch2
+[root@localhost ch2]# cat ch2
+cat: ch2: 그런 파일이나 디렉터리가 없습니다
+[root@localhost ch2]# ls
+data1.cp  data1.ln  data1.sl  him  test.ln  test.ln2  test.org  you
+[root@localhost ch2]# cd
+[root@localhost ~]# cat ch2
+cat: ch2: 디렉터리입니다
+[root@localhost ~]# cat tmp
+cat: tmp: 디렉터리입니다
+[root@localhost ~]# cd ch2
+[root@localhost ch2]# ls
+data1.cp  data1.ln  data1.sl  him  test.ln  test.ln2  test.org  you
+[root@localhost ch2]# cd
+[root@localhost ~]# cd tmp
+[root@localhost tmp]# ls
+data1.cp  data1.ln  data1.sl  him  test.ln  test.ln2  test.org  you
+[root@localhost tmp]# cd
+[root@localhost ~]# rm -r tmp
+rm: remove 심볼릭 링크 `tmp'? y
+[root@localhost ~]# rm test.ln test.ln2 test.org
+rm: cannot remove `test.ln': 그런 파일이나 디렉터리가 없습니다
+rm: cannot remove `test.ln2': 그런 파일이나 디렉터리가 없습니다
+rm: remove 일반 파일 `test.org'? y
+[root@localhost ~]# cd ch2
+[root@localhost ch2]# rm test.ln2
+rm: remove 일반 파일 `test.ln2'? y
+[root@localhost ch2]# rm test.org
+rm: remove 일반 파일 `test.org'? y
+[root@localhost ch2]# ls
+data1.cp  data1.ln  data1.sl  him  test.ln  you
+[root@localhost ch2]# cd
+[root@localhost ~]# cp /etc/hosts work
+[root@localhost ~]# ln work work.ln
+[root@localhost ~]# ln -s work work.sl
+[root@localhost ~]# cp work work.cp
+[root@localhost ~]# gedit work.sl
+[root@localhost ~]# cat work
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 
+[root@localhost ~]# cat work.ln
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 
+[root@localhost ~]# cat work.sl
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 
+[root@localhost ~]# cat work.cp
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+[root@localhost ~]# rm work work.ln work.sl work.cp
+rm: remove 일반 파일 `work'? y
+rm: remove 일반 파일 `work.ln'? y
+rm: remove 심볼릭 링크 `work.sl'? y
+rm: remove 일반 파일 `work.cp'? y
+[root@localhost ~]# ls
+anaconda-ks.cfg  core.2061             test1.iso  다운로드  비디오  음악
+backup           initial-setup-ks.cfg  work.sl~   문서      사진
+ch2              test                  공개       바탕화면  서식

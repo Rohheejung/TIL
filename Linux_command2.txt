@@ -1,0 +1,241 @@
+[root@localhost ~]# su -centos
+bash: entos: command not found
+[root@localhost ~]# ls /home
+centos  testuser
+[root@localhost ~]# su -centos
+bash: entos: command not found
+[root@localhost ~]# su - centos
+마지막 로그인: 목  1월 18 11:25:12 KST 2018 일시 :0
+[centos@localhost ~]$ su- centos
+bash: su-: 명령을 찾을 수 없습니다...
+[centos@localhost ~]$ su - centos
+암호:
+마지막 로그인: 목  1월 18 11:28:20 KST 2018 일시 pts/0
+[centos@localhost ~]$ find -user centos
+.
+./.mozilla
+./.mozilla/extensions
+./.mozilla/plugins
+./.bash_logout
+./.bash_profile
+./.bashrc
+./.config
+./.config/imsettings
+./.config/user-dirs.dirs
+./.config/user-dirs.locale
+./.config/abrt
+./.config/gnome-session
+./.config/gnome-session/saved-session
+./.config/pulse
+./.config/pulse/cookie
+./.config/pulse/8421b17a42c7442bbdab23b70802a595-device-volumes.tdb
+./.config/pulse/8421b17a42c7442bbdab23b70802a595-stream-volumes.tdb
+./.config/pulse/8421b17a42c7442bbdab23b70802a595-card-database.tdb
+./.config/pulse/8421b17a42c7442bbdab23b70802a595-default-sink
+./.config/pulse/8421b17a42c7442bbdab23b70802a595-default-source
+./.config/gconf
+./.config/goa-1.0
+./.config/dconf
+./.config/dconf/user
+./.config/ibus
+./.config/ibus/bus
+./.config/ibus/bus/8421b17a42c7442bbdab23b70802a595-unix-0
+./.config/gtk-3.0
+./.config/gtk-3.0/bookmarks
+./.config/tracker
+./.config/nautilus
+./.config/nautilus/desktop-metadata
+./.config/nautilus/accels
+./.config/evolution
+./.config/evolution/sources
+./.config/gnome-initial-setup-done
+./.config/yelp
+./.config/yelp/yelp.cfg
+./.cache
+./.cache/imsettings
+./.cache/imsettings/log.bak
+./.cache/imsettings/log
+./.cache/abrt
+./.cache/abrt/lastnotification
+./.cache/abrt/applet_dirlist
+./.cache/event-sound-cache.tdb.localhost.localdomain.x86_64-redhat-linux-gnu
+./.cache/tracker
+./.cache/tracker/db-version.txt
+./.cache/tracker/meta.db
+./.cache/tracker/db-locale.txt
+./.cache/tracker/meta.db-wal
+./.cache/tracker/meta.db-shm
+./.cache/tracker/ontologies.gvdb
+./.cache/tracker/miner-applications-locale.txt
+./.cache/tracker/last-crawl.txt
+./.cache/tracker/first-index.txt
+./.cache/tracker/no-need-mtime-check.txt
+./.cache/evolution
+./.cache/evolution/addressbook
+./.cache/evolution/addressbook/trash
+./.cache/evolution/calendar
+./.cache/evolution/calendar/trash
+./.cache/evolution/mail
+./.cache/evolution/mail/trash
+./.cache/evolution/memos
+./.cache/evolution/memos/trash
+./.cache/evolution/sources
+./.cache/evolution/sources/trash
+./.cache/evolution/tasks
+./.cache/evolution/tasks/trash
+./.cache/folks
+./.cache/folks/avatars
+./.cache/gstreamer-1.0
+./.cache/gstreamer-1.0/registry.x86_64.bin
+./.cache/thumbnails
+./.cache/thumbnails/fail
+./.cache/thumbnails/fail/gnome-thumbnail-factory
+./.cache/thumbnails/fail/gnome-thumbnail-factory/44701658c19aba0ff69f3711f10f5222.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/9ca13b4aff9f6ad842f9ede2b6439395.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/3b8e0018abeb42008c25dd55fbf8bac4.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/84f7e10323f77bbad3659a0c08eeaba6.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/ff923a4aee47f2888d234cf61a115aeb.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/2a342214d73ab9b3d178d30915a5127b.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/b97b64a149a5e3f54f25ffe2434e06a0.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/84be1fd2a3eec18c07c015212f3cb858.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/09fc952d78aa2a3c22b860a95710ab28.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/302cff404573fcf592edebfce9eb8e94.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/d04c7f05ab57de1faa99658431c87e04.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/883e3264e8d8cb72228a298ffe4b2502.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/e956807b87094856794b09c35f3260c7.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/7145a785772ace25f827c5ccd78f073e.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/53308ebcbc7c24384f460e94f7296c51.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/9708a1f7c4f70144b187527e5da56d63.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/edd82e003abd5e40b4d17938bd92a95e.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/a8407cd71869b7f9a315d0787af17221.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/f4aec08602f10ae1dc5ec2774f162b1a.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/bbd05c720f98313c5bfba149d4cf4ec7.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/880b3c33c3242415aff5f93aec83a0f7.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/e76d256950d05cb22884f064365d1527.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/2aa0b59a2f188a9b8ffea4b6a65d6f3b.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/f8870bdc11a179ab4872795c77c7f560.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/5b438e08a5cbd70ae0ba042786bba972.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/acfec50118f8de1a9c0706f3440cb106.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/d333568cf576dd990bd5acf0815c8402.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/b9a7bc351850da8625993071790eb6f5.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/d603e0d507c383fb3629d2def16ed8d8.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/ccca7db9cd1992231f968d0387615d4b.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/f247fdf4304aac2db6fbe4048ca84ad1.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/9a9e4cb4083382c107c4e2731ad0e268.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/bf78b645c0895fc1f65b130fd73e8e82.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/097462391aced742ec24a3febf792b8a.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/f46d9b6a5ffe141faa57eed2f3df0a7d.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/3660140f3360abdaca919c4e1c977ec9.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/ef5a5c0ada612c0534b507217aa34576.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/0e4d8262761ba00415cf8aadc2570e1e.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/bab401f373d08f5b7bf79b0b0268f214.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/fd83038f35296b94d18e32b28a5eee2f.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/0450f7543c43a21df10f87fe972ccce3.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/689e10330321c4fd4e1ef5a00a52653a.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/9a0c6d59fdfcf15863dbe5dedeeaa30d.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/69475c9ba50844df98597e71e7b35625.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/8db01d0c2223a0b0a32b2a52d1f90b51.png
+./.cache/thumbnails/fail/gnome-thumbnail-factory/460e111da96ad297c9ff8d5634990726.png
+./바탕화면
+./다운로드
+./서식
+./공개
+./문서
+./음악
+./사진
+./비디오
+./.ICEauthority
+./.local
+./.local/share
+./.local/share/keyrings
+./.local/share/keyrings/login.keyring
+./.local/share/keyrings/user.keystore
+./.local/share/applications
+./.local/share/sounds
+./.local/share/gsettings-data-convert
+./.local/share/gnome-shell
+./.local/share/gnome-shell/application_state
+./.local/share/icc
+./.local/share/gnome-settings-daemon
+./.local/share/gnome-settings-daemon/input-sources-converted
+./.local/share/telepathy
+./.local/share/telepathy/mission-control
+./.local/share/telepathy/mission-control/accounts.cfg
+./.local/share/telepathy/mission-control/accounts-goa.cfg
+./.local/share/tracker
+./.local/share/tracker/data
+./.local/share/tracker/data/tracker-store.journal
+./.local/share/tracker/data/tracker-store.ontology.journal
+./.local/share/evolution
+./.local/share/evolution/addressbook
+./.local/share/evolution/addressbook/trash
+./.local/share/evolution/addressbook/system
+./.local/share/evolution/addressbook/system/contacts.db
+./.local/share/evolution/addressbook/system/photos
+./.local/share/evolution/calendar
+./.local/share/evolution/calendar/trash
+./.local/share/evolution/calendar/system
+./.local/share/evolution/calendar/system/calendar.ics
+./.local/share/evolution/mail
+./.local/share/evolution/mail/trash
+./.local/share/evolution/memos
+./.local/share/evolution/memos/trash
+./.local/share/evolution/memos/system
+./.local/share/evolution/memos/system/journal.ics
+./.local/share/evolution/tasks
+./.local/share/evolution/tasks/trash
+./.local/share/evolution/tasks/system
+./.local/share/evolution/tasks/system/tasks.ics
+./.local/share/.converted-launchers
+./.local/share/folks
+./.local/share/folks/relationships.ini
+./.local/share/nautilus
+./.local/share/nautilus/scripts
+./.local/share/webkit
+./.local/share/webkit/icondatabase
+./.local/share/webkit/icondatabase/WebpageIcons.db
+./.esd_auth
+./.bash_history
+./temp
+./temp/mid
+./temp/mid/han
+./tmp1
+./tmp2
+./ch2
+./ch2/temp
+./ch2/temp/text1
+./ch2/temp/text2
+./ch2/temp/data1
+./ch2/temp2
+./ch2/temp2/text1
+./ch2/temp2/text2
+./ch2/temp2/temp
+./ch2/temp2/temp/text1
+./ch2/temp2/temp/text2
+./text1
+[centos@localhost ~]$ ls *.repo
+ls: cannot access *.repo: 그런 파일이나 디렉터리가 없습니다
+[centos@localhost ~]$ find /usr -name ls
+/usr/bin/ls
+find: ‘/usr/lib/firewalld’: 허가 거부
+find: ‘/usr/share/polkit-1/rules.d’: 허가 거부
+find: ‘/usr/libexec/initscripts/legacy-actions/auditd’: 허가 거부
+[centos@localhost ~]$ find /home -user user1
+find: ‘user1’ is not the name of a known user
+[centos@localhost ~]$ find /usr -name cp
+/usr/bin/cp
+find: ‘/usr/lib/firewalld’: 허가 거부
+find: ‘/usr/share/polkit-1/rules.d’: 허가 거부
+find: ‘/usr/libexec/initscripts/legacy-actions/auditd’: 허가 거부
+[centos@localhost ~]$ whereis mv
+mv: /usr/bin/mv /usr/share/man/man1/mv.1.gz /usr/share/man/man1p/mv.1p.gz
+[centos@localhost ~]$ whereis cp
+cp: /usr/bin/cp /usr/share/man/man1/cp.1.gz /usr/share/man/man1p/cp.1p.gz
+[centos@localhost ~]$ whereis dir
+dir: /usr/bin/dir /usr/share/man/man1/dir.1.gz
+[centos@localhost ~]$ whereis clear
+clear: /usr/bin/clear /usr/share/man/man1/clear.1.gz
+[centos@localhost ~]$ whereis mkdir
+mkdir: /usr/bin/mkdir /usr/share/man/man1/mkdir.1.gz /usr/share/man/man1p/mkdir.1p.gz /usr/share/man/man2/mkdir.2.gz /usr/share/man/man3p/mkdir.3p.gz
+[centos@localhost ~]$ ^C
+[centos@localhost ~]$ 
