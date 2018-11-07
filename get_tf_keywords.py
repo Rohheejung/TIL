@@ -7,103 +7,108 @@ get_tf_keywords.py
 
 import sys
 import ujson
+import math
 from collections import Counter
 
-WORK_PATH="/Users/int_sub05/Desktop/Nohhj/tmc10/text-mining-camp"
-DATA_PATH=WORK_PATH+"/data"
+WORK_PATH = "C:/Users/int_sub05/Desktop/Nohhj/tmc10/text-mining-camp"
+DATA_PATH = WORK_PATH + "/data"
 
-def read_documents(input_file):
+def get_morph_counters(input_file):
     """
-    형태소 분석 문헌들을 읽어서 돌려준다.
+    형태소 분석 문헌들을 읽어서 형태소 빈도 계수 객체들을 돌려준다.
     """
     
-    docs=[]
+    mh_morph_counter = Counter()
+    mb_morph_counter = Counter()
     
     for line in input_file:
-        json_doc=ujson.loads(line.strip())
+        json_doc = ujson.loads(line.strip())
         
-        if "abstract_ma" not in json_doc:
+        if json_doc["president"] not in {"노무현", "이명박"}:
             continue
         
-        morphs=[]
-        
-        for json_key in ["title_ma","abstract_ma"]:
-            for sent_ma_res in json_doc[json_key]:
-                for morph_lex, morph_pos in sent_ma_res:
-                    if morph_pos not in {"NNG","NNP","XR"}:
-                        continue
+        for sent_ma_res in json_doc["body_ma"]:
+            for morph_lex, morph_pos in sent_ma_res:
+                if morph_pos not in {"NNG", "NNP", "XR", "VV", "VA", "MAG"}:
+                    continue
+                
+                if json_doc["president"] == "노무현":
+                    mh_morph_counter[morph_lex] += 1
+                else:
+                    mb_morph_counter[morph_lex] += 1
                     
-                    morphs.append(morph_lex)
-                    
-        ma_doc={
-                "title":json_doc["title"],
-                "abstract":json_doc["abstract"],
-                "morphs":morphs
-                }
-        docs.append(ma_doc)
-        
-    return docs
+    return mh_morph_counter, mb_morph_counter
 
-def get_term_freq_counters(docs):
+def get_morph_probs(morph_counter):
     """
-    주어진 문헌 집합으로부터 용어 빈도 리스트를 생성하여 돌려준다.
+    형태소들의 발현 확률을 구하여 돌려준다.
     """
     
-    term_freq_counters=[]
+    morph_probs = Counter()
+    sum_morph_freqs = sum(morph_counter.values())
     
-    for doc in docs:
-        term_freq_counter=Counter()
-        term_freq_counter.update(doc["morphs"])
-        term_freq_counters.append(term_freq_counter)
+    for morph, freq in morph_counter.items():
+        morph_probs[morph] = freq / sum_morph_freqs
         
-    return term_freq_counters
+    return morph_probs
 
-def extract_tf_keywords(term_freq_counters):
+def get_kl_divs(morph_probs_a, morph_probs_b):
     """
-    용어 빈도 기반 문헌별 키워드를 추출하여 돌려준다.
+    문헌 집합별로 형태소들의 KL 발산을 구하여 돌려준다.
     """
     
-    tf_keywords=[]
+    kl_divs_a = Counter()
+    kl_divs_b = Counter()
+    all_morphs = set(morph_probs_a.keys()) | set(morph_probs_b.keys())
     
-    for term_freq_counter in term_freq_counters:
-        keywords=[]
-        for term, term_freq in term_freq_counter.most_common(10):
-            keywords.append(term)
-            tf_keywords.append(keywords)
+    for morph in all_morphs:
+        morph_prob_a = morph_probs_a[morph]
+        morph_prob_b = morph_probs_b[morph]
+        avg_morph_prob = (morph_prob_a + morph_prob_b) / 2
+        
+        # 형태소 발현 확률이 0이면 KL 발산을 음의 무한대로 정의한다.
+        
+        if morph_prob_a == 0.0:
+            kl_divs_a[morph] = -math.inf
+        else:
+            kl_divs_a[morph] = morph_prob_a * math.log(morph_prob_a / avg_morph_prob)
             
-        return tf_keywords
+        if morph_prob_b == 0.0:
+            kl_divs_b[morph] = -math.inf
+        else:
+            kl_divs_b[morph] = morph_prob_b * math.log(morph_prob_b / avg_morph_prob)
+    
+    return kl_divs_a, kl_divs_b
 
-def write_keywords(output_file, docs, tf_keywords):
+def write_kl_divs(output_file, kl_divs_a, kl_divs_b):
     """
-    문헌별 키워드를 출력 파일에 기록한다.
+    문헌 집합별 KL 발산 계산 결과를 출력 파일에 기록한다.
     """
     
-    for doc, keywords in zip(docs, tf_keywords):
-        print("제목: {}".format(doc["title"]), file=output_file)
-        print("요약문: {}".format(doc["abstract"]), file=output_file)
-        print("키워드: {}".format(", ".join(keywords)), file=output_file)
-        print("="*60, file=output_file)
+    print("MH 연설문 차별어\t\tMB 연설문 차별어", file=output_file)
+    
+    for (morph_a, kl_div_a), (morph_b, kl_div_b) in zip(kl_divs_a.most_common(50), kl_divs_b.most_common(50)):
+        print("{}\t{}\t{}\t{}".format(morph_a, kl_div_a, morph_b, kl_div_b),
+              file=output_file)
         
 def main(input_file_name, output_file_name):
     """
-    문헌별 키워드를 용어 빈도(TF)에 기반하여 추출한다.
+    문헌 집합별 차별어를 추출하여 기록한다.
     """
     
     with open(output_file_name, "w", encoding="utf-8") as output_file, open(input_file_name, "r", encoding="utf-8") as input_file:
-        docs=read_documents(input_file)
-        term_freq_counters=get_term_freq_counters(docs)
-        tf_keywords=extract_tf_keywords(term_freq_counters)
-        write_keywords(output_file, docs, tf_keywords)
+        mh_morph_counter, mb_morph_counter = get_morph_counters(input_file)
+        mh_morph_probs = get_morph_probs(mh_morph_counter)
+        mb_morph_probs = get_morph_probs(mb_morph_counter)
+        mh_kl_divs, mb_kl_divs = get_kl_divs(mh_morph_probs, mb_morph_probs)
+        write_kl_divs(output_file, mh_kl_divs, mb_kl_divs)
         
 #
 # main
 #
         
-input_file_name="/Users/int_sub05/.spyder-py3/prac_counter/ai_bib_info.ma.txt"
-#input_file_name=sys.argv[1]
-output_file_name="/Users/int_sub05/.spyder-py3/prac_counter/ai_bib_info.tf.txt"
-#output_file_name=sys.argv[2]
+input_file_name = DATA_PATH + "/speeches/speeches.ma.txt"
+# input_file_name = sys.argv[1]
+output_file_name = DATA_PATH + "/speeches/speeches.kl.txt"
+# output_file_name = sys.argv[2]
 main(input_file_name, output_file_name)
-    
-
-
